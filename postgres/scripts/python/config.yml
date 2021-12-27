@@ -1,0 +1,2 @@
+model_name: "facebook/bart-large-mnli" # name of model for zero shot learning
+model_path: "/zero_shot/zero_shot_model/" # path to save the model

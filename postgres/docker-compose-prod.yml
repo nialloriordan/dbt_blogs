@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  postgres:
+    volumes:
+      - ./postgres-prod.conf:/etc/postgresql/postgresql.conf
+      - redditpgdata:/data
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+
+volumes:
+  reddiitpgdata:
+    external:
+      name: redditpgdata
