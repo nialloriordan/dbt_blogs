@@ -1,0 +1,12 @@
+data_engineering:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: reddit_postgres
+      user: postgres
+      pass: "{{ env_var('DBT_PASS') }}"
+      port: 5432
+      dbname: blog_scraper
+      schema: blogs
+      threads: 4

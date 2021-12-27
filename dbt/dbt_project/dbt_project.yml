@@ -1,0 +1,44 @@
+
+name: 'data_engineering'
+version: '1.0.0'
+config-version: 2
+
+vars:
+  zero_shot_candidate_labels: [
+      "data orchestration", 
+      "container orchestration",
+      "data transform", 
+      "data ingestion",
+      "scheduling",
+      "ETL jobs", 
+      "learning", 
+      "streaming",
+      "data lake",
+      "data lakehouse",
+      "data warehouse",
+      "data mesh",
+      "career",
+      "CI/CD"
+  ]
+
+on-run-start:
+  - '{{create_udfs()}}'
+
+profile: 'data_engineering'
+
+model-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+seed-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  data_engineering:
+    staging:
+      +materialized: view
