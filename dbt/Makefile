@@ -11,7 +11,7 @@ help:
 IMAGE_NAME=dbt_blogs
 
 build-dbt: # Build the dbt image
-	@docker build -t $(IMAGE_NAME) .
+	docker build -t $(IMAGE_NAME) .
 
 run-dbt-local: # Run dbt locally
 	docker-compose up
@@ -31,4 +31,3 @@ serve-dbt-docs: # Serve dbt documentation locally
 		--network=postgres_bridge \
 		$(IMAGE_NAME):latest \
 		/bin/bash -c "dbt docs generate && dbt docs serve --port 8001"
-

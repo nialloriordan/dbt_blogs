@@ -25,6 +25,6 @@ WORKDIR /home/dbt_user/dbt_project
 RUN pip install dbt-postgres==1.0.0
 
 # install dbt dependencies
-COPY --chown=dbt_user:dbt_user dbt_project/dbt_project.yml /home/dbt_user/build_dbt_deps/dbt_project.yml
-COPY --chown=dbt_user:dbt_user dbt_project/packages.yml /home_dbt_user/build_dbt_deps/packages.yml
+COPY --chown=dbt_user:dbt_user dbt_project/dbt_project.yml /home/dbt_user/build_dbt_deps/
+COPY --chown=dbt_user:dbt_user dbt_project/packages.yml /home/dbt_user/build_dbt_deps/
 RUN cd /home/dbt_user/build_dbt_deps && dbt deps
