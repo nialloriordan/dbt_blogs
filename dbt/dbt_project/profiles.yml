@@ -8,5 +8,23 @@ data_engineering:
       pass: "{{ env_var('DBT_PASS') }}"
       port: 5432
       dbname: blog_scraper
-      schema: blogs
+      schema: blogs_dev
+      threads: 4
+    ci:
+      type: postgres
+      host: reddit_postgres
+      user: postgres
+      pass: "{{ env_var('DBT_PASS') }}"
+      port: 5432
+      dbname: blog_scraper
+      schema: blogs_ci
+      threads: 4
+    prod:
+      type: postgres
+      host: reddit_postgres
+      user: postgres
+      pass: "{{ env_var('DBT_PASS') }}"
+      port: 5432
+      dbname: blog_scraper
+      schema: blogs_prod
       threads: 4

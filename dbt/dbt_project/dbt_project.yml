@@ -20,9 +20,10 @@ vars:
       "career",
       "CI/CD"
   ]
+  max_zero_shot_labels: 3
 
 on-run-start:
-  - '{{create_udfs()}}'
+  - '{{ create_udfs() }}'
 
 profile: 'data_engineering'
 
@@ -42,3 +43,7 @@ models:
   data_engineering:
     staging:
       +materialized: view
+      +schema: staging
+    output:
+      +materialized: table
+      +schema: output
