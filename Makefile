@@ -27,6 +27,9 @@ isort: # sort python imports
 sqlfluff: # check sql style in dbt with sqlfluff
 	poetry run sqlfluff lint dbt/dbt_project/models
 
-lint: flake8 sqlfluff # check python and sql styles
+lint-python: flake8 # check python styles
 	poetry run black postgres/scripts/python --check
 	poetry run isort postgres/scripts/python --check
+
+lint-sql: # check sql styles
+	poetry run sqlfluff lint dbt/dbt_project/models --check
