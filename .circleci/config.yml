@@ -17,7 +17,7 @@ jobs:
           paths:
             - .venv
       - run:
-          name: linting
+          name: lint python
           command: make lint-python
       - run:
           name: lint sql
