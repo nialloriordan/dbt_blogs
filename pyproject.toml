@@ -30,7 +30,6 @@ dialect       = "postgres"
 sql_file_exts = ".sql,.sql.j2,.dml,.ddl"
 exclude_rules = "L044,L031"
 
-
 [tool.sqlfluff.templater.dbt]
 project_dir  = "dbt/dbt_project"
 profiles_dir = "dbt/dbt_project"
@@ -54,7 +53,7 @@ load_macros_from_path = "dbt/dbt_project/macros"
 
 [tool.sqlfluff.rules]
 tab_space_size              = 4
-max_line_length             = 110
+max_line_length             = 100
 indent_unit                 = "space"
 comma_style                 = "trailing"
 allow_scalar                = true
