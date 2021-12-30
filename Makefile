@@ -21,7 +21,12 @@ black: # run formatter with black
 flake8: # check python style with flake8
 	poetry run flake8 postgres/scripts/python
 
+isort: # sort python imports
+	poetry run isort postgres/scripts/python
+
 sqlfluff: # check sql style in dbt with sqlfluff
 	poetry run sqlfluff lint dbt/dbt_project/models
 
-lint: black flake8 sqlfluff # check python and sql styles
+lint: flake8 sqlfluff # check python and sql styles
+	poetry run black postgres/scripts/python --check
+	poetry run isort postgres/scripts/python --check

@@ -1,10 +1,10 @@
 """This module is used for running zero shot classification"""
-import pandas as pd
-import numpy as np
-from transformers import pipeline
-from transformers import set_seed
-from tqdm import tqdm
 import math
+
+import numpy as np
+import pandas as pd
+from tqdm import tqdm
+from transformers import pipeline, set_seed
 
 
 def candidate_labels_to_columns(candidate_labels: list, sort: bool = True) -> list:
