@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.9.6
+    steps:
+      - checkout
+      - restore_cache:
+          key: poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
+      - run:
+          name: Update poetry requirements
+          command: |
+            make install-poetry
+            make check-poetry
+      - save_cache:
+          key: poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
+          paths:
+            - .venv
+      - run:
+          name: lint python
+          command: make lint-python
+      - run:
+          name: lint sql
+          command: make lint-sql
+

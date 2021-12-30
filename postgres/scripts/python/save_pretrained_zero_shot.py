@@ -1,8 +1,8 @@
 """This module is used for saving a zero shot model to disk for future use"""
-from transformers import pipeline
-from transformers import AutoTokenizer, AutoConfig
 import argparse
+
 import yaml
+from transformers import AutoConfig, AutoTokenizer, pipeline
 
 
 def save_zero_shot_model(model_name="facebook/bart-large-mnli", model_path="./zero-shot-model/"):

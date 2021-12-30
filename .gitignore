@@ -1,0 +1,20 @@
+# poetry
+.venv
+
+# postgres
+reddit_postgres
+.env
+
+# dbt
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# jupyter notebooks
+.ipynb_checkpoints
+zero-shot-model
+*.csv
+
+# dev documentation
+structure_base.md
