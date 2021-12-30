@@ -2,14 +2,16 @@ version: 2
 jobs:
   build:
     docker:
-      - image: python:3.9.6
+      - image: circleci/python:3.9.6
     steps:
       - checkout
       - restore_cache:
           key: poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
       - run:
           name: Update poetry requirements
-          command: make update-poetry
+          command: |
+            make install-poetry
+            make check-poetry
       - save_cache:
           key: poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
           paths:
