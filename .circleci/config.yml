@@ -15,9 +15,9 @@ jobs:
       - run:
           name: lint python
           command: |
-          make install-poetry
-          make requirements
-          make lint-python
+            make install-poetry
+            make requirements
+            make lint-python
       - save_cache:
           key: poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
           paths:
