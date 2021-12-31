@@ -21,7 +21,6 @@ jobs:
           key: poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
           paths:
             - .venv
-            - /home/circleci/.cache/pypoetry/virtualenvs
       - run:
           name: lint python
           command: |

@@ -32,4 +32,4 @@ lint-python: flake8 # check python styles
 	poetry run isort postgres/scripts/python --check
 
 lint-sql: # check sql styles
-	poetry run sqlfluff lint dbt/dbt_project/models --check
+	poetry run sqlfluff lint dbt/dbt_project/models
