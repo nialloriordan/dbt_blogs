@@ -25,10 +25,8 @@ jobs:
       - run:
           name: lint python
           command: |
-            ls -la
             make lint-python
       - run:
           name: lint sql
           command: | 
-            ls -la dbt/dbt_project 
             make lint-sql
