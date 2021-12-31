@@ -24,8 +24,10 @@ jobs:
       - run:
           name: lint python
           command: |
+            ls -la
             make lint-python
       - run:
           name: lint sql
           command: | 
+            ls -la
             make lint-sql
