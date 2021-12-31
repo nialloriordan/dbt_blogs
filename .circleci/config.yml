@@ -8,18 +8,27 @@ jobs:
       - restore_cache:
           key: poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
       - run:
-          name: Update poetry requirements
+          name: Check poetry lock file
           command: |
             make install-poetry
             make check-poetry
+      - run:
+          name: install poetry dependencies
+          command: |
+            make install-poetry
+            make requirements
       - save_cache:
           key: poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
           paths:
             - .venv
+             - /home/circleci/.cache/pypoetry/virtualenvs
       - run:
           name: lint python
-          command: make lint-python
+          command: |
+            ls -la
+            make lint-python
       - run:
           name: lint sql
-          command: make lint-sql
-
+          command: | 
+            ls -la dbt/dbt_project 
+            make lint-sql

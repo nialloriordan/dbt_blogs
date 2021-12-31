@@ -1,0 +1,12 @@
+
+version: 2
+
+sources:
+  - name: blog_scraper
+    database: blog_scraper
+    description: Raw Reddit Data from Pushshift API
+    schema: raw_data
+    tables:
+      - name: reddit_de
+        description: Reddit data from dataengineering subreddit
+    tags: ["raw_data", "reddit"]
