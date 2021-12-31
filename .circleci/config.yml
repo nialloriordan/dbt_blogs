@@ -24,4 +24,6 @@ jobs:
             - .venv
       - run:
           name: lint sql
-          command: make lint-sql
+          command: | 
+            make install-poetry
+            make lint-sql
