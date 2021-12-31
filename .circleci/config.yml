@@ -12,14 +12,14 @@ jobs:
           command: |
             make install-poetry
             make check-poetry
-      - save_cache:
-          key: poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
-          paths:
-            - .venv
       - run:
           name: lint python
           command: make lint-python
       - run:
           name: lint sql
           command: make lint-sql
+      - save_cache:
+          key: poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
+          paths:
+            - .venv
 
