@@ -1,0 +1,22 @@
+
+version: 2
+
+models:
+  - name: base__reddit_subreddit_data_engineering
+    description: "staging table: intermediate table for column renaming"
+    tags: ['staging', 'reddit', 'base']
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+  - name: stg_reddit__filter_posts
+    description: "staging table: intermediate table to filter removed/deleted posts"
+    tags: ['staging', 'reddit', 'preprocess']
+  - name: stg_reddit__zero_shot
+    description: "staging table: intermediate table for creating zero shot features"
+    tags: ['staging', 'reddit', 'zero_shot']
+  - name: stg_reddit__zero_shot_top_n_labels
+    description: "staging table: intermediate table for specifying top n zero shot labels"
+    tags: ['staging', 'reddit', 'zero_shot']
