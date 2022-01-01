@@ -1,0 +1,38 @@
+# Structure 
+
+- [poetry.toml](./poetry.toml): Specifies Poetry to create a virtualenv within the repository
+- [poetry.lock](./poetry.lock): Specifies all of the packages installed by Poetry and their exact versions
+- [.flake8](./.flake8): Specify flake8 configuration
+- [.circleci](./.circleci): CircelCI folder for CI
+  - [config.yml](./.circleci/config.yml): CircelCI config
+- [.example.env](./.example.env): example .env file
+- [analysis](./analysis): Folder of jupyter notebooks for analysis
+  - [Analysis_praw.ipynb](./analysis/Analysis_praw.ipynb)
+  - [Analysis_pushshift.ipynb](./analysis/Analysis_pushshift.ipynb)
+  - [test_macros.ipynb](./analysis/test_macros.ipynb)
+  - [zero_shot_inference.py.ipynb](./analysis/zero_shot_inference.py.ipynb)
+- [dbt](./dbt): dbt project folder
+  - [tests](./dbt/tests): dbt tests
+  - [macros](./dbt/macros): dbt macros
+  - [models](./dbt/models): dbt models
+  - [dbt_project.yml](./dbt/dbt_project.yml)
+  - [packages.yml](./dbt/packages.yml)
+  - [profiles.yml](./dbt/profiles.yml)
+  - [Dockerfile](./dbt/Dockerfile): dbt docker image
+- [pyproject.toml](./pyproject.toml): Contains the minimum build system requirements and used by Poetry
+- [docker-compose-prod.yml](./docker-compose-prod.yml)
+- [docker-compose.yml](./docker-compose.yml)
+- [postgres](./postgres)
+  - [scripts](./postgres/scripts)
+  - [postgres.conf](./postgres/postgres.conf)
+  - [postgres-prod.conf](./postgres/postgres-prod.conf)
+  - [Dockerfile](./postgres/Dockerfile)
+- [Makefile](./Makefile): Convenient file to make builds easier to execute.
+- [docs](./docs): Documentation for repository
+  - [images](./docs/images): Images used for documentation
+  - [architecture](./docs/architecture.md): Project architecture
+  - [development](./docs/development.md): Development documentation
+  - [dbt](./docs/dbt.md): dbt documentation
+  - [postgres](./docs/postgres.md): postgres documentation
+- [structure_tree.sh](./structure_tree.sh): bash script to create repository tree as a markdown file
+  

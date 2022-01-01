@@ -5,7 +5,7 @@ data_engineering:
       type: postgres
       host: localhost
       user: postgres
-      pass: "{{ env_var('DBT_PASS') }}"
+      pass: "{{ env_var('POSTGRES_PASSWORD') }}"
       port: 5432
       dbname: blog_scraper
       schema: blogs_dev
@@ -14,7 +14,7 @@ data_engineering:
       type: postgres
       host: reddit_postgres
       user: postgres
-      pass: "{{ env_var('DBT_PASS') }}"
+      pass: "{{ env_var('POSTGRES_PASSWORD') }}"
       port: 5432
       dbname: blog_scraper
       schema: blogs_dev
@@ -23,7 +23,7 @@ data_engineering:
       type: postgres
       host: reddit_postgres
       user: postgres
-      pass: "{{ env_var('DBT_PASS') }}"
+      pass: "{{ env_var('POSTGRES_PASSWORD') }}"
       port: 5432
       dbname: blog_scraper
       schema: blogs_ci
@@ -32,7 +32,7 @@ data_engineering:
       type: postgres
       host: reddit_postgres
       user: postgres
-      pass: "{{ env_var('DBT_PASS') }}"
+      pass: "{{ env_var('POSTGRES_PASSWORD') }}"
       port: 5432
       dbname: blog_scraper
       schema: blogs_prod

@@ -1,5 +1,5 @@
 # Include the .env file:
-ifneq (,$(wildcard ./.env))
+ifneq (,$(wildcard ../.env))
     include .env
     export
 endif
@@ -19,7 +19,7 @@ run-dbt-local: # Run dbt locally
 restart-dbt-local: # Restart dbt locally
 	docker-compose down && docker-compose up
 
-run-reddit-pg-prod: # Run dbt in prod
+run-dbt-prod: # Run dbt in prod
 	docker-compose -f docker-compose.yml -f docker-compose.prod.yml -d
 
 serve-dbt-docs: # Serve dbt documentation locally
