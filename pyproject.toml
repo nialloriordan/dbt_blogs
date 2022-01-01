@@ -55,7 +55,7 @@ target.name          = "dev"
 max_zero_shot_labels = 3
 
 [tool.sqlfluff.templater.jinja]
-load_macros_from_path = "dbt/dbt_project/macros"
+load_macros_from_path = "dbt/macros"
 
 [tool.sqlfluff.rules]
 tab_space_size              = 4

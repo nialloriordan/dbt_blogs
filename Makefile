@@ -12,13 +12,13 @@ docs-structure: # create base for structure documentation
 poetry-install: # install poetry
 	pip --no-cache-dir install poetry==1.2.0a2
 
-requirements: # install all requirements
+poetry-requirements: # install all requirements
 	poetry install --sync
 
-update-poetry: # update poetry lock file
+poetry-update: # update poetry lock file
 	poetry update
 
-check-poetry: # check poetry lock file is updated
+poetry-check: # check poetry lock file is updated
 	poetry lock --check
 
 black: # run formatter with black
@@ -30,15 +30,15 @@ flake8: # check python style with flake8
 isort: # sort python imports
 	poetry run isort postgres/scripts/python
 
-sqlfluff: # check sql style in dbt with sqlfluff
-	poetry run sqlfluff lint dbt/dbt_project/models
+sqlfluff: # fix sql files
+	poetry run sqlfluff fix dbt/models
 
 lint-python: flake8 # check python styles
 	poetry run black postgres/scripts/python --check
 	poetry run isort postgres/scripts/python --check
 
 lint-sql: # check sql styles
-	poetry run sqlfluff lint dbt/dbt_project/models
+	poetry run sqlfluff lint dbt/models
 
 dbt-build: # Build the dbt image
 	docker build -t $(DBT_IMAGE_NAME) $(PWD)/dbt/

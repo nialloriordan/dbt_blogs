@@ -17,23 +17,20 @@ The purpose of this repository is to handle the end to end pipeline of organisin
 <a class="btnfire small stroke"><em class="fas fa-chevron-circle-down"></em>&nbsp;&nbsp;Show all details</a>
 </summary>
 
+Create a `.env` from the [example.env](../.example.env) via `cp .example.env .env` and update the env variables to match your settings.
 
-Copy the `.example.env` file to `.env` via `cp .example.env .env` and update the variables as appropriate.
+Build the docker images:
+- `make pg-build`: build the postgres image
+- `make dbt-build`: build the dbt image
 
-Start the Postgres Data Warehouse:
-From within the [postgres](postgres/) folder run:
-- `docker network create postgres_bridge`: enable dbt and postgres to communicate
-- `make build-reddit-pg`: build the postgres image
-- `make run-reddit-pg-local`: run postgres
+Start the Postgres and dbt containers:
+- `make run-services-local`
 
-Start dbt:
-From within the [dbt](dbt/) folder run:
-- `make build-dbt`: build the dbt image
-- `make run-dbt-local:`: run dbt
-- `make serve-dbt-docs`: serve dbt documentation at [127.0.0.1:8001](http://127.0.0.1:8001/)
+Serve the the dbt documentation at [127.0.0.1:8001](http://127.0.0.1:8001/)
+- `make dbt-serve-docs`: serve dbt documentation at [127.0.0.1:8001](http://127.0.0.1:8001/)
 
 Run dbt commands:
-- `docker exec -it docker exec -it dbt_blogs /bin/bash`: enter dbt container
+- `make dbt-exec-container`: enter dbt container
 - `dbt run`: run dbt transformations
 
 </details>

@@ -10,18 +10,17 @@ jobs:
       - run:
           name: Check poetry lock file
           command: |
-            make install-poetry
-            make check-poetry
+            make poetry-install
+            make poetry-check
       - run:
           name: install poetry dependencies
           command: |
-            make install-poetry
-            make requirements
+            make poetry-install
+            make poetry-requirements
       - save_cache:
           key: poetry-deps-{{ .Branch }}-{{ checksum "poetry.lock" }}
           paths:
             - .venv
-             - /home/circleci/.cache/pypoetry/virtualenvs
       - run:
           name: lint python
           command: |

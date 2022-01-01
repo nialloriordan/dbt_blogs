@@ -35,4 +35,3 @@
   - [dbt](./docs/dbt.md): dbt documentation
   - [postgres](./docs/postgres.md): postgres documentation
 - [structure_tree.sh](./structure_tree.sh): bash script to create repository tree as a markdown file
-  
