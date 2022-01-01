@@ -51,11 +51,10 @@ dbt_is_incremental = "{% macro is_incremental() %}False{% endmacro %}"
 zero_shot_labels   = "{% macro zero_shot_labels(output_schema = False)%}zero_shot_label{% endmacro %}"
 
 [tool.sqlfluff.templater.jinja.context]
-target.name          = "dev"
-max_zero_shot_labels = 3
+target.name = "dev"
 
 [tool.sqlfluff.templater.jinja]
-load_macros_from_path = "dbt/dbt_project/macros"
+load_macros_from_path = "dbt/macros"
 
 [tool.sqlfluff.rules]
 tab_space_size              = 4

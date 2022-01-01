@@ -20,19 +20,15 @@
 
 Makefiles are provided to make builds easier to execute.
 
-To use the Makefiles a `.env` file is required at the root of this repository. This can be created from [example.env](../.example.env) via `cp .example.env .env` and updating the env variables to match your settings.
+To use the [Makefile](../Makefile) a `.env` file is required at the root of this repository. This can be created from [example.env](../.example.env) via `cp .example.env .env` and updating the env variables to match your settings.
 
-There are three distinct Makefiles to separate commands for different sections of this repository.
-
-1. [Root Makefile](../Makefile). Installs requirements locally and specifies commands for testing and linting.
-2. [dbt Makefile](../dbt/Makefile). Deploy dbt.
-3. [Postgres Makefile](../postgres/Makefile). Deploy Postgres.
+The Makefile is self documented and you can view a description of each of the make targets by running `make help` or `make`.
 
 ## Poetry - dependency manager
 
 All requirements are managed by Poetry. To install the correct version of Poetry and install the dbt requirements locally run:
-1. Install Poetry via `make install-poetry` 
-2. Install requirements via `make requirements`
+1. Install Poetry via `make poetry-install` 
+2. Install requirements via `make poetry-requirements`
 
 Note: 
 - A virtual environment should **NOT** be used when installing the requirements as this can cause conflicts with Poetry's virtual environment
@@ -41,16 +37,12 @@ Note:
 
 To add new requirements:
 1. Add requirements to [pyproject.toml](../pyproject.toml)
-2. Update poetry's lock file via `make update-poetry`
-3. Install the requirements with `make requirements` locally to make sure the build succeeds
+2. Update poetry's lock file via `make poetry-update`
+3. Install the requirements with `make poetry-requirements` locally to make sure the build succeeds
 
 ## Docker
 
-To enable the dbt and postgres containers to communicate it's necessary to create the following network:
-
-`docker network create postgres_bridge`
-
-For production, it is also necessary to create the following named volumes:
+For production, it's necessary to create the following named volumes:
 
 `docker volume create redditpgdata` - used to persist airflow postgres data
 
@@ -61,7 +53,7 @@ To build the Postgres database, docker is required.
 ### Building the image
 
 ```bash
-make build-reddit-pg
+make pg-build
 ```
 
 ### Running Postgres
@@ -69,7 +61,7 @@ make build-reddit-pg
 To run Postgres locally using the [docker-compose.yml](../postgres/docker-compose.yml) file:
 
 ```bash
-make run-reddit-pg-local
+make run-services-local
 ```
 
 In production, the volumes are managed by Docker and an optimized
@@ -80,12 +72,12 @@ relevant sections in the [docker-compose.yml](../postgres/docker-compose.yml) fi
 To run in production:
 
 ```bash
-make run-reddit-pg-prod
+make run-services-prod
 ```
 
 Note:
-- ensure the above commands are executed within the [postgres/](../postgres) folder.
-- additional helper commands are available in the [Makefile](../postgres/Makefile) and can be viewed by running `make help` or `make`.
+- ensure the above commands are executed within the [root of the repository](../.).
+- additional helper commands are available in the [Makefile](../Makefile) and can be viewed by running `make help` or `make`.
 
 ## dbt
 
@@ -115,19 +107,19 @@ data_engineering:
 
 Notes: 
 - make sure to update the configuration with your password.
-- all dbt commands should be run within the [dbt_project](../dbt/dbt_project/) folder.
+- all dbt commands should be run within the [dbt](../dbt/.) folder.
 
 ### docker container
 
 #### Building the image
 
 ```bash
-make build-dbt
+make dbt-build
 ```
 
 #### Running dbt
 
-To run Postgres locally using the [docker-compose.yml](../postgres/docker-compose.yml) file:
+To run dbt locally using the [docker-compose.yml](../postgres/docker-compose.yml) file:
 
 ```bash
 make run-dbt-local
@@ -140,7 +132,7 @@ make serve-dbt-docs
 ```
 
 Note:
-- ensure the above commands are executed within the [dbt/](../dbt) folder.
+- ensure the above commands are executed within the [root of the repository](../.).
 
 ## Linting
 
@@ -172,12 +164,11 @@ The sqlfluff configuration is handled in [pyproject.toml](../pyproject.toml).
 Check sql linting
 
 ```bash
-make lint-python
+make lint-sql
 ```
 
 Fix sql linting
 
 ```bash
-make black
-make isort
+make sqlfluff
 ```
