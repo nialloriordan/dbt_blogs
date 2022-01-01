@@ -1,5 +1,5 @@
 # Include the .env file:
-ifneq (,$(wildcard ./.env))
+ifneq (,$(wildcard ../.env))
     include .env
     export
 endif
@@ -11,7 +11,7 @@ help:
 IMAGE_NAME=reddit_postgres
 
 build-reddit-pg: # Build the reddit postgres image
-	@docker build -t $(IMAGE_NAME) .
+	docker build -t $(IMAGE_NAME) .
 
 run-reddit-pg-local: # Run the Reddit postgres locally
 	docker-compose up
