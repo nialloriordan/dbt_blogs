@@ -15,18 +15,18 @@
   - [tests](./dbt/tests): dbt tests
   - [macros](./dbt/macros): dbt macros
   - [models](./dbt/models): dbt models
-  - [dbt_project.yml](./dbt/dbt_project.yml)
-  - [packages.yml](./dbt/packages.yml)
-  - [profiles.yml](./dbt/profiles.yml)
+  - [dbt_project.yml](./dbt/dbt_project.yml): defines a dbt project
+  - [packages.yml](./dbt/packages.yml): specify dbt packages
+  - [profiles.yml](./dbt/profiles.yml): dbt profiles to connect to data warehouses
   - [Dockerfile](./dbt/Dockerfile): dbt docker image
 - [pyproject.toml](./pyproject.toml): Contains the minimum build system requirements and used by Poetry
-- [docker-compose-prod.yml](./docker-compose-prod.yml)
-- [docker-compose.yml](./docker-compose.yml)
-- [postgres](./postgres)
-  - [scripts](./postgres/scripts)
-  - [postgres.conf](./postgres/postgres.conf)
-  - [postgres-prod.conf](./postgres/postgres-prod.conf)
-  - [Dockerfile](./postgres/Dockerfile)
+- [docker-compose-prod.yml](./docker-compose-prod.yml): update docker compose file for production
+- [docker-compose.yml](./docker-compose.yml): specify docker services to create
+- [postgres](./postgres): postgres folder
+  - [scripts](./postgres/scripts): custom python and sql scripts
+  - [postgres.conf](./postgres/postgres.conf): specify postgres parameters
+  - [postgres-prod.conf](./postgres/postgres-prod.conf): specify postgres parameters in produciton
+  - [Dockerfile](./postgres/Dockerfile): Postgres docker image
 - [Makefile](./Makefile): Convenient file to make builds easier to execute.
 - [docs](./docs): Documentation for repository
   - [images](./docs/images): Images used for documentation
@@ -35,4 +35,3 @@
   - [dbt](./docs/dbt.md): dbt documentation
   - [postgres](./docs/postgres.md): postgres documentation
 - [structure_tree.sh](./structure_tree.sh): bash script to create repository tree as a markdown file
-  
