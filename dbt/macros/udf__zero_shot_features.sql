@@ -51,7 +51,7 @@ dev_query = (
     f"""
 WHERE {date_column} >= CURRENT_DATE - interval '{incremental_interval}'
 """
-    if not is_incremental and dbt_target == "dev"
+    if not is_incremental and dbt_target != "prod"
     else ""
 )
 
